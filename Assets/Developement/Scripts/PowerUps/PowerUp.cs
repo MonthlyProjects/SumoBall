@@ -1,10 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class PowerUp : MonoBehaviour
 {
     public bool IsAppliedToCurrentPlayer;
-    public void ApplyEffect()
+    [SerializeField] protected float duration;
+    public virtual void ApplyEffect()
     {
-        Debug.Log(this.name);
+        StartCoroutine(WaitToCancelEffect());
     }
+    IEnumerator WaitToCancelEffect()
+    {
+        yield return new WaitForSeconds(duration);
+        CancelEffect();
+    }
+    public abstract void CancelEffect();
 }

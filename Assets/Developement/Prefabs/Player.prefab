@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAppliedToCurrentPlayer: 0
+  duration: 5
 --- !u!1 &1394143187299303708
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAppliedToCurrentPlayer: 1
+  duration: 5
 --- !u!1 &2655577893638677060
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAppliedToCurrentPlayer: 1
+  duration: 5
 --- !u!1 &5613834815761875325
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,3 +441,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAppliedToCurrentPlayer: 1
+  duration: 5
+  ballParent: {fileID: 2370341260534922024}
