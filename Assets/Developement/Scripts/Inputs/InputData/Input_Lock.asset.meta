@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/RollyPolly/Dev/Scripts/Inputs/InputData/Input_Lock.asset.meta
+guid: d8a074725e438954283e5c99599d7d3f
+========
+guid: 159cba799d45d9043baec0ec3863a150
+>>>>>>>> RollyMovement:Assets/RollyPolly/Dev/ScriptableObjects/SO_EventLockableObject.asset.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
