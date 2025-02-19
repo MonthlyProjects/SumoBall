@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ba1ebaf783748459d5074195b41a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: aa4d91c6f4b31544bb785fc90b9be854, type: 2}
   playerInputParent: {fileID: 1981149716}
   playerInputs: []
 --- !u!114 &1837579224

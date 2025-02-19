@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInputManager))]
-public class InputManager : MonoBehaviour
+public class InputManagerR : MonoBehaviour
 {
-    public static InputManager Instance;
+    public static InputManagerR Instance;
+
+    [SerializeField] private GameData gameData;
 
     [SerializeField] private Transform playerInputParent;
     [SerializeField] private List<PlayerInput> playerInputs;
@@ -18,9 +20,9 @@ public class InputManager : MonoBehaviour
         Initialize();
     }
 
-    private void Initialize ()
+    private void Initialize()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;
@@ -37,9 +39,9 @@ public class InputManager : MonoBehaviour
     }
 
     [EasyButtons.Button]
-    public void EnableJoining (bool enable)
+    public void EnableJoining(bool enable)
     {
-        if(enable)
+        if (enable)
         {
             _playerInputManager.EnableJoining();
         }
@@ -49,12 +51,14 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void OnPlayerJoin (PlayerInput playerInput)
+    private void OnPlayerJoin(PlayerInput playerInput)
     {
         playerInputs.Add(playerInput);
 
         playerInput.gameObject.transform.parent = playerInputParent;
         EnablePlayerCurrentActionMap(playerInputs.Count - 1, false);
+
+        gameData.AddPlayer(new PlayerData(playerInput));
     }
 
     private void OnPlayerLeft(PlayerInput playerInput)
@@ -65,7 +69,7 @@ public class InputManager : MonoBehaviour
     [EasyButtons.Button]
     public void EnableAllPlayerCurrentActionMap(bool enable)
     {
-        for(int i = 0; i < playerInputs.Count; i++)
+        for (int i = 0; i < playerInputs.Count; i++)
         {
             if (enable)
             {
@@ -79,10 +83,10 @@ public class InputManager : MonoBehaviour
     }
 
     [EasyButtons.Button]
-    public void EnablePlayerCurrentActionMap (int index, bool enable)
+    public void EnablePlayerCurrentActionMap(int index, bool enable)
     {
         //CheckIndex
-        if(enable)
+        if (enable)
         {
             playerInputs[index].currentActionMap.Enable();
         }
@@ -95,20 +99,20 @@ public class InputManager : MonoBehaviour
     [EasyButtons.Button]
     public void SwitchPlayerActionMap(string actionMap)
     {
-        for(int i =0; i < playerInputs.Count;i++)
+        for (int i = 0; i < playerInputs.Count; i++)
         {
             playerInputs[i].SwitchCurrentActionMap(actionMap);
         }
     }
 
     [EasyButtons.Button]
-    public void SwitchPlayerActionMap (int index, string actionMap)
+    public void SwitchPlayerActionMap(int index, string actionMap)
     {
         playerInputs[index].SwitchCurrentActionMap(actionMap);
     }
 
     [EasyButtons.Button]
-    public void DestroyPLayerInput (int index)
+    public void DestroyPLayerInput(int index)
     {
         PlayerInput playerInput = playerInputs[index];
         playerInputs.Remove(playerInput);
@@ -116,10 +120,19 @@ public class InputManager : MonoBehaviour
     }
 
     [EasyButtons.Button]
-    public void DebugCurrentActionMap (int index)
+    public void DebugCurrentActionMap(int index)
     {
         InputActionMap v = playerInputs[index].currentActionMap;
         Debug.Log(v.name);
         Debug.Log(v.enabled);
     }
+
+
+
+}
+
+public enum BindingMap
+{
+    InGame,
+    Menu
 }
