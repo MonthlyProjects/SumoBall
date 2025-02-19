@@ -216,6 +216,7 @@ MonoBehaviour:
   loadingImage: {fileID: 1744942186}
   rotationSpeed: 1
   loadingRoundState: {fileID: 11400000, guid: f8916b51c3207534888553a3ac0c2a07, type: 2}
+  inRoundState: {fileID: 11400000, guid: d24766e03af2bb84c93ea8c4446352d9, type: 2}
 --- !u!1 &195642393
 GameObject:
   m_ObjectHideFlags: 0

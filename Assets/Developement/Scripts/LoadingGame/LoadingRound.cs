@@ -8,6 +8,8 @@ public class LoadingRound : MonoBehaviour
     [SerializeField] private RectTransform loadingImage;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameState loadingRoundState;
+    [SerializeField] private GameState inRoundState;
+
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class LoadingRound : MonoBehaviour
             yield return null;
         }
         GameStateManager.Instance.RemoveState(loadingRoundState);
+        GameStateManager.Instance.AddState(inRoundState);
         loadingImage.gameObject.SetActive(false);
 
     }
