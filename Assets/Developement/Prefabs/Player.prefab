@@ -441,5 +441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAppliedToCurrentPlayer: 1
-  duration: 5
+  duration: 10
   ballParent: {fileID: 2370341260534922024}
+  ballController: {fileID: 4963052281645627634}

@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float minTimeBetweenPush;
     [SerializeField] private float pushBetweenPlayersVelocityMultiplier;
+    public float PushForce { get { return pushBetweenPlayersVelocityMultiplier; } set {  pushBetweenPlayersVelocityMultiplier = value; } }
 
     private Vector3 _moveDirection;
     private Camera _camera;
@@ -56,11 +57,13 @@ public class BallController : MonoBehaviour
         if (velocityAlongNormal > 0) return;
 
         // Apply boost factor to the velocity along the normal
-        float boostedVelocity = velocityAlongNormal * pushBetweenPlayersVelocityMultiplier;
+        float boostedVelocityBall1 = velocityAlongNormal * ballController2.PushForce;
+        float boostedVelocityBall2 = velocityAlongNormal * pushBetweenPlayersVelocityMultiplier;
+
 
         // Calculate new velocities (for equal masses in a perfectly elastic collision)
-        Vector3 velocityBall1 = (GetVelocity()                 - boostedVelocity * collisionNormal) * Mathf.Clamp(ballController2.GetVelocity().magnitude / GetVelocity().magnitude,0.5f,2f);
-        Vector3 velocityBall2 = (ballController2.GetVelocity() + boostedVelocity * collisionNormal) * Mathf.Clamp(GetVelocity().magnitude / ballController2.GetVelocity().magnitude,0.5f,2f);
+        Vector3 velocityBall1 = (GetVelocity()                 - boostedVelocityBall1 * collisionNormal) * Mathf.Clamp(ballController2.GetVelocity().magnitude / GetVelocity().magnitude,0.5f,2f);
+        Vector3 velocityBall2 = (ballController2.GetVelocity() + boostedVelocityBall2 * collisionNormal) * Mathf.Clamp(GetVelocity().magnitude / ballController2.GetVelocity().magnitude,0.5f,2f);
 
         SetPushVelocity(velocityBall1);
         ballController2.SetPushVelocity(velocityBall2);
