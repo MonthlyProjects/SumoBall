@@ -31,4 +31,10 @@ public class GameData : ScriptableObject
         OnPlayerRemove?.Invoke(playersData[index]);
     }
 
+    public void LauchPlayer(PlayerData playerData)
+    {
+        if (playerData.playerObject == null) { return; }
+
+        playerData.playerObject.GetComponent<PlayerController>().LauchPlayer();
+    }
 }

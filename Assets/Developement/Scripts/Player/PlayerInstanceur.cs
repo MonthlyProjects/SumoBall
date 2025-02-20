@@ -98,11 +98,4 @@ public class PlayerInstanceur : MonoBehaviour
 
         OnPlayerDespawn.Invoke(playerData);
     }
-
-    public void LauchPlayer (PlayerData playerData)
-    {
-        if (playerData.playerObject == null) { return; }
-
-        playerData.playerObject.GetComponent<PlayerController>().LauchPlayer();
-    }
 }
