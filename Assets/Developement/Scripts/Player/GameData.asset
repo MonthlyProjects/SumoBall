@@ -12,3 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e6c4cd6d6847404581dd968d9921b68, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  playersData:
+  - playerObject: {fileID: 0}
+    playerInput: {fileID: 0}
+  - playerObject: {fileID: 0}
+    playerInput: {fileID: 0}
+  OnPlayerAdd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerRemove:
+    m_PersistentCalls:
+      m_Calls: []

@@ -12,6 +12,11 @@ public class GameData : ScriptableObject
 
     public UnityEvent<PlayerData> OnPlayerRemove;
 
+    public void Initialize ()
+    {
+        playersData = new List<PlayerData>();
+    }
+
     public void AddPlayer (PlayerData playerData)
     {
         if(playersData == null)
@@ -29,5 +34,33 @@ public class GameData : ScriptableObject
     {
         playersData.Remove(playersData[index]);
         OnPlayerRemove?.Invoke(playersData[index]);
+    }
+    public void LauchPlayers()
+    {
+        for(int i = 0; i < playersData.Count; i++)
+        {
+            PlayerData playerData = playersData[i];
+            if (playerData.playerObject == null) { return; }
+
+            playerData.playerObject.GetComponent<PlayerController>().LauchPlayer();
+        }
+    }
+
+    public void StopPlayers()
+    {
+        for (int i = 0; i < playersData.Count; i++)
+        {
+            PlayerData playerData = playersData[i];
+            if (playerData.playerObject == null) { return; }
+
+            playerData.playerObject.GetComponent<PlayerController>().StopPlayer();
+        }
+    }
+
+    public void LauchPlayer(PlayerData playerData)
+    {
+        if (playerData.playerObject == null) { return; }
+
+        playerData.playerObject.GetComponent<PlayerController>().LauchPlayer();
     }
 }

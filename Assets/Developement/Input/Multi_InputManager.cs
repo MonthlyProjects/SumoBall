@@ -7,11 +7,7 @@ public class Multi_InputManager : MonoBehaviour
     public static Multi_InputManager Instance;
 
     [SerializeField] private GameData gameData;
-
-    [SerializeField] private Transform playerInputParent;
     [SerializeField] private List<PlayerInput> playerInputs;
-
-    private PlayerInputManager _playerInputManager;
 
     private void Awake()
     {
@@ -26,46 +22,28 @@ public class Multi_InputManager : MonoBehaviour
             return;
         }
 
+        DontDestroyOnLoad(gameObject); 
+
         Instance = this;
 
         playerInputs = new List<PlayerInput>();
 
-        _playerInputManager = gameObject.GetComponent<PlayerInputManager>();
 
-        _playerInputManager.playerJoinedEvent.AddListener(OnPlayerJoin);
-        _playerInputManager.playerLeftEvent.AddListener(OnPlayerLeft);
+        gameData.OnPlayerAdd.AddListener(t => { OnPlayerAdd(t.playerInput); });
+        gameData.OnPlayerRemove.AddListener(t => { OnPlayerRemove(t.playerInput); });
     }
 
-    /// <summary>
-    /// Save PlayerInput in the GameData
-    /// </summary>
-    /// <param name="playerInput"></param>
-    private void OnPlayerJoin(PlayerInput playerInput)
+    private void OnPlayerAdd(PlayerInput playerInput)
     {
         playerInputs.Add(playerInput);
 
-        playerInput.gameObject.transform.parent = playerInputParent;
+        playerInput.gameObject.transform.parent = transform;
         EnablePlayerCurrentActionMap(playerInputs.Count - 1, false);
-
-        gameData.AddPlayer(new PlayerData(playerInput));
     }
 
-    private void OnPlayerLeft(PlayerInput playerInput)
+    private void OnPlayerRemove(PlayerInput playerInput)
     {
         playerInputs.Remove(playerInput);
-    }
-
-    [EasyButtons.Button]
-    public void EnableJoining(bool enable)
-    {
-        if (enable)
-        {
-            _playerInputManager.EnableJoining();
-        }
-        else
-        {
-            _playerInputManager.DisableJoining();
-        }
     }
 
     [EasyButtons.Button]

@@ -1,12 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[Serializable]
 public class PlayerData
 {
     //Peut etre null
-    public GameObject playerObject;
+    [SerializeField] public GameObject playerObject;
     //Ne peut pas etre null
-    public PlayerInput playerInput;
+    [SerializeField] public PlayerInput playerInput;
     //Peut etre null
     public PlayerSkin playerSkin;
 
