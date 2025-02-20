@@ -11,7 +11,7 @@ public class LoadingRound : MonoBehaviour
     [SerializeField] private GameState inRoundState;
 
 
-    private void Awake()
+    private void Start()
     {
         StartLoading();
     }
