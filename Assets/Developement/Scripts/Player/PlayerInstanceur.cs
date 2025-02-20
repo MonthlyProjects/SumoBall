@@ -11,6 +11,8 @@ public class PlayerInstanceur : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private PlayerSkin defaultSkin;
 
+    [SerializeField] private Transform playerParent;
+
     [SerializeField] private List<Transform> sps;
 
     public UnityEvent<PlayerData> OnPlayerSpawn;
@@ -32,7 +34,7 @@ public class PlayerInstanceur : MonoBehaviour
                 playerSkin = defaultSkin;
             } 
 
-            gameData.playersData[i].playerObject = Instantiate(playerPrefab, sps[Random.Range(0,sps.Count)].position, Quaternion.identity, null);
+            gameData.playersData[i].playerObject = Instantiate(playerPrefab, sps[Random.Range(0,sps.Count)].position, Quaternion.identity, playerParent);
 
             gameData.playersData[i].playerObject.GetComponent<PlayerController>().InitializePlayer(new PlayerController.InitializeData()
             {
@@ -55,7 +57,7 @@ public class PlayerInstanceur : MonoBehaviour
             playerSkin = defaultSkin;
         }
 
-        playerData.playerObject = Instantiate(playerPrefab, sps[Random.Range(0, sps.Count)].position, Quaternion.identity, null);
+        playerData.playerObject = Instantiate(playerPrefab, sps[Random.Range(0, sps.Count)].position, Quaternion.identity, playerParent);
 
         playerData.playerObject.GetComponent<PlayerController>().InitializePlayer(new PlayerController.InitializeData()
         {
