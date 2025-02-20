@@ -30,4 +30,5 @@ public class GameData : ScriptableObject
         playersData.Remove(playersData[index]);
         OnPlayerRemove?.Invoke(playersData[index]);
     }
+
 }

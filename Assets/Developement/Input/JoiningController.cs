@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,5 +31,18 @@ public class JoiningController : MonoBehaviour
     private void OnPlayerLeft(PlayerInput playerInput)
     {
         gameData.RemovePlayer(playerInput.playerIndex);
+    }
+
+    [EasyButtons.Button]
+    public void EnableJoining(bool enable)
+    {
+        if (enable)
+        {
+            _playerInputManager.EnableJoining();
+        }
+        else
+        {
+            _playerInputManager.DisableJoining();
+        }
     }
 }
