@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInputManager))]
-public class InputManagerR : MonoBehaviour
+public class Multi_InputManager : MonoBehaviour
 {
-    public static InputManagerR Instance;
+    public static Multi_InputManager Instance;
 
     [SerializeField] private GameData gameData;
 
@@ -20,7 +18,7 @@ public class InputManagerR : MonoBehaviour
         Initialize();
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         if (Instance != null)
         {
@@ -38,19 +36,10 @@ public class InputManagerR : MonoBehaviour
         _playerInputManager.playerLeftEvent.AddListener(OnPlayerLeft);
     }
 
-    [EasyButtons.Button]
-    public void EnableJoining(bool enable)
-    {
-        if (enable)
-        {
-            _playerInputManager.EnableJoining();
-        }
-        else
-        {
-            _playerInputManager.DisableJoining();
-        }
-    }
-
+    /// <summary>
+    /// Save PlayerInput in the GameData
+    /// </summary>
+    /// <param name="playerInput"></param>
     private void OnPlayerJoin(PlayerInput playerInput)
     {
         playerInputs.Add(playerInput);
@@ -64,6 +53,19 @@ public class InputManagerR : MonoBehaviour
     private void OnPlayerLeft(PlayerInput playerInput)
     {
         playerInputs.Remove(playerInput);
+    }
+
+    [EasyButtons.Button]
+    public void EnableJoining(bool enable)
+    {
+        if (enable)
+        {
+            _playerInputManager.EnableJoining();
+        }
+        else
+        {
+            _playerInputManager.DisableJoining();
+        }
     }
 
     [EasyButtons.Button]
@@ -85,7 +87,6 @@ public class InputManagerR : MonoBehaviour
     [EasyButtons.Button]
     public void EnablePlayerCurrentActionMap(int index, bool enable)
     {
-        //CheckIndex
         if (enable)
         {
             playerInputs[index].currentActionMap.Enable();
@@ -112,6 +113,17 @@ public class InputManagerR : MonoBehaviour
     }
 
     [EasyButtons.Button]
+    public void DestroyAllPLayerInput()
+    {
+        for (int i = 0; i < playerInputs.Count; i+=0)
+        {
+            PlayerInput playerInput = playerInputs[i];
+            playerInputs.Remove(playerInput);
+            Destroy(playerInput.gameObject);
+        }
+    }
+
+    [EasyButtons.Button]
     public void DestroyPLayerInput(int index)
     {
         PlayerInput playerInput = playerInputs[index];
@@ -129,10 +141,4 @@ public class InputManagerR : MonoBehaviour
 
 
 
-}
-
-public enum BindingMap
-{
-    InGame,
-    Menu
 }
