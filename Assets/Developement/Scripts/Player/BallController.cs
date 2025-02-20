@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BallController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class BallController : MonoBehaviour
     private Vector3 _moveDirection;
     private Camera _camera;
     private float _timeSinceLastPush;
+
+    public UnityEvent<Vector3> OnContactWithOtherPlayer;
     private void Awake()
     {
         _camera = Camera.main;
@@ -61,7 +64,6 @@ public class BallController : MonoBehaviour
 
         while (true)
         {
-            Debug.Log("Je Suis en update");
             Move();
             yield return new WaitForFixedUpdate();
         }
@@ -111,6 +113,10 @@ public class BallController : MonoBehaviour
 
         SetPushVelocity(velocityBall1);
         ballController2.SetPushVelocity(velocityBall2);
+
+        Vector3 contactPosition = (rb.position + ballController2.transform.position) / 2;
+        ballController2.OnContactWithOtherPlayer?.Invoke(contactPosition);
+        OnContactWithOtherPlayer?.Invoke(contactPosition);
     }
     public void SetPushTime()
     {
