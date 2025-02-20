@@ -9,6 +9,7 @@ public class PlayerScoreRoundController : MonoBehaviour
 
     private BallController lastBallToBumpMe;
     public int score;
+    public UnityEvent OnScoreAdded;
 
     private void Awake()
     {
@@ -21,7 +22,10 @@ public class PlayerScoreRoundController : MonoBehaviour
     private void OnDisable()
     {
         ballController.OnContactWithOtherBallController.RemoveListener(UpdateLastBallToBumpMe);
-        DisconnectToBallDeath();
+        if (lastBallToBumpMe != null)
+        {
+            ConnectToBallDeath(false);
+        }
     }
     private void UpdateLastBallToBumpMe(BallController ballController)
     {
@@ -44,12 +48,9 @@ public class PlayerScoreRoundController : MonoBehaviour
             ballHealth.OnDeath.RemoveListener(lastBallToBumpMe.GetComponent<PlayerScoreRoundController>().AddScore);
         }
     }
-    private void DisconnectToBallDeath()
-    {
-        ballHealth.OnDeath.RemoveListener(lastBallToBumpMe.GetComponent<PlayerScoreRoundController>().AddScore);
-    }
     private void AddScore(Vector3 temp)
     {
         score += 1;
+        OnScoreAdded?.Invoke();
     }
 }
