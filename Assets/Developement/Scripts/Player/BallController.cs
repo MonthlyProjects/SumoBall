@@ -1,14 +1,18 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
     [SerializeField] private float force;
     [SerializeField] private float maxSpeed;
-    [SerializeField] private SO_InputVector directionInput;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private SO_InputVector sO_InputVector;
     [SerializeField] private float minTimeBetweenPush;
     [SerializeField] private float pushBetweenPlayersVelocityMultiplier;
     public float PushForce { get { return pushBetweenPlayersVelocityMultiplier; } set {  pushBetweenPlayersVelocityMultiplier = value; } }
+
+    private Coroutine fixedUpdate;
 
     private Vector3 _moveDirection;
     private Camera _camera;
@@ -18,15 +22,61 @@ public class BallController : MonoBehaviour
         _camera = Camera.main;
         _timeSinceLastPush = Time.time;
     }
-    private void OnEnable()
+
+    public void Initialize(SO_InputVector sO_InputVector)
     {
-        directionInput.OnValueChanged += MoveInput;
+        this.sO_InputVector = sO_InputVector;
+        Initialize();
     }
-    private void OnDisable()
+
+    [EasyButtons.Button]
+    public void Initialize () 
     {
-        directionInput.OnValueChanged -= MoveInput;
+        sO_InputVector.OnValueChanged += MoveInput;
     }
-    private void FixedUpdate()
+
+    public void DeInitialize ()
+    {
+        sO_InputVector.OnValueChanged -= MoveInput;
+    }
+
+    [EasyButtons.Button]
+    public void Lauch (bool lauch)
+    {
+        if(lauch && fixedUpdate == null)
+        {
+            fixedUpdate = StartCoroutine(CorouFixedUpdate());
+            return;
+        }
+        else if (!lauch && fixedUpdate != null) 
+        {
+            StopCoroutine(fixedUpdate);
+            fixedUpdate = null;
+        }
+    }
+
+    IEnumerator CorouFixedUpdate ()
+    {
+        yield return null;
+
+        while (true)
+        {
+            Debug.Log("Je Suis en update");
+            Move();
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
+
+    public void MoveInput(Vector2 direction)
+    {
+        //Projects the camera forward on 2D horizontal plane
+        Vector3 camForwardOnPlane = new Vector3(_camera.transform.forward.x, 0, _camera.transform.forward.z).normalized;
+        Vector3 camRightOnPlane = new Vector3(_camera.transform.right.x, 0, _camera.transform.right.z).normalized;
+        _moveDirection = direction.x * camRightOnPlane + direction.y * camForwardOnPlane;
+    }
+
+    public void Move ()
     {
         rb.AddForce(_moveDirection * force * Time.fixedDeltaTime);
 
@@ -35,13 +85,7 @@ public class BallController : MonoBehaviour
             rb.linearVelocity = maxSpeed * rb.linearVelocity.normalized;
         }
     }
-    void MoveInput(Vector2 direction)
-    {
-        //Projects the camera forward on 2D horizontal plane
-        Vector3 camForwardOnPlane = new Vector3(_camera.transform.forward.x, 0, _camera.transform.forward.z).normalized;
-        Vector3 camRightOnPlane = new Vector3(_camera.transform.right.x, 0, _camera.transform.right.z).normalized;
-        _moveDirection = direction.x * camRightOnPlane + direction.y * camForwardOnPlane;
-    }
+
     void PushBothPlayer(BallController ballController2)
     {
         // Calculate the normal vector
@@ -94,6 +138,11 @@ public class BallController : MonoBehaviour
         {
             PushBothPlayer(ballController);
         }
+    }
+
+    private void OnDisable()
+    {
+        Lauch(false);
     }
 
     [Header("GIZMOS")]

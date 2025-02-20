@@ -182,6 +182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2370341260534922024}
+  - component: {fileID: 3912359975137120356}
   - component: {fileID: 7554905784147239845}
   - component: {fileID: 9108954847718739250}
   - component: {fileID: 2196823665204185562}
@@ -190,6 +191,7 @@ GameObject:
   - component: {fileID: 2620441411293621125}
   - component: {fileID: 4323558266049029997}
   - component: {fileID: 9183993327566564307}
+  - component: {fileID: 8923539369373790360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -213,6 +215,20 @@ Transform:
   - {fileID: 46305084031374666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3912359975137120356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825232975653261462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7db26107ce2e374ca26c5a6576363a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballController: {fileID: 4963052281645627634}
+  inputController: {fileID: 8923539369373790360}
 --- !u!33 &7554905784147239845
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -301,8 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 1500
   maxSpeed: 30
-  directionInput: {fileID: 11400000, guid: 33669fc2857bbc24eb28f9c6551c435d, type: 2}
   rb: {fileID: 4778758854170475090}
+  sO_InputVector: {fileID: 0}
   minTimeBetweenPush: 0.05
   pushBetweenPlayersVelocityMultiplier: 1.5
   ball1VelocityDir: {x: 0, y: 0, z: 0}
@@ -396,6 +412,19 @@ MonoBehaviour:
   - {fileID: 7445638664098793632}
   - {fileID: 5895411136532468364}
   - {fileID: 3277970056608377744}
+--- !u!114 &8923539369373790360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825232975653261462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ce6d3418211ac41a5ff30cb229f933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sO_InputVector: {fileID: 0}
 --- !u!1 &8920550185706347599
 GameObject:
   m_ObjectHideFlags: 0
