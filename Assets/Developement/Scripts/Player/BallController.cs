@@ -20,6 +20,7 @@ public class BallController : MonoBehaviour
     private float _timeSinceLastPush;
 
     public UnityEvent<Vector3> OnContactWithOtherPlayer;
+    public UnityEvent<BallController> OnContactWithOtherBallController;
     private void Awake()
     {
         _camera = Camera.main;
@@ -117,6 +118,8 @@ public class BallController : MonoBehaviour
         Vector3 contactPosition = (rb.position + ballController2.transform.position) / 2;
         ballController2.OnContactWithOtherPlayer?.Invoke(contactPosition);
         OnContactWithOtherPlayer?.Invoke(contactPosition);
+        OnContactWithOtherBallController?.Invoke(ballController2);
+        ballController2.OnContactWithOtherBallController?.Invoke(this);
     }
     public void SetPushTime()
     {

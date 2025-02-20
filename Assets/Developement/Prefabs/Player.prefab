@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 4323558266049029997}
   - component: {fileID: 9183993327566564307}
   - component: {fileID: 8923539369373790360}
+  - component: {fileID: 915155118770672466}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -404,6 +405,9 @@ MonoBehaviour:
   OnContactWithOtherPlayer:
     m_PersistentCalls:
       m_Calls: []
+  OnContactWithOtherBallController:
+    m_PersistentCalls:
+      m_Calls: []
   ball1VelocityDir: {x: 0, y: 0, z: 0}
   ball2VelocityDir: {x: 0, y: 0, z: 0}
   ball1velMagnitude: 0
@@ -508,6 +512,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sO_InputVector: {fileID: 0}
+--- !u!114 &915155118770672466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825232975653261462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de60aab3797419c4eb82dfd3a415322d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballController: {fileID: 4963052281645627634}
+  ballHealth: {fileID: 4323558266049029997}
 --- !u!1 &8897510548352095475
 GameObject:
   m_ObjectHideFlags: 0
