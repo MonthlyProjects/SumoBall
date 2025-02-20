@@ -14,6 +14,22 @@ public class PlayerController : MonoBehaviour
         inputController.Initialize(initializeData.PlayerInput, so_input);
     }
 
+    private void OnDestroy()
+    {
+        DestroyPlayer();
+    }
+
+    [EasyButtons.Button]
+    public void DestroyPlayer ()
+    {
+        StopPlayer();
+
+        ballController.DeInitialize();
+        inputController.DeInitialize();
+
+        Destroy(gameObject);
+    }
+
     [EasyButtons.Button]
     public void LauchPlayer ()
     {

@@ -7,8 +7,6 @@ public class Multi_InputManager : MonoBehaviour
     public static Multi_InputManager Instance;
 
     [SerializeField] private GameData gameData;
-
-    [SerializeField] private Transform playerInputParent;
     [SerializeField] private List<PlayerInput> playerInputs;
 
     private void Awake()
@@ -24,6 +22,8 @@ public class Multi_InputManager : MonoBehaviour
             return;
         }
 
+        DontDestroyOnLoad(gameObject); 
+
         Instance = this;
 
         playerInputs = new List<PlayerInput>();
@@ -37,7 +37,7 @@ public class Multi_InputManager : MonoBehaviour
     {
         playerInputs.Add(playerInput);
 
-        playerInput.gameObject.transform.parent = playerInputParent;
+        playerInput.gameObject.transform.parent = transform;
         EnablePlayerCurrentActionMap(playerInputs.Count - 1, false);
     }
 
