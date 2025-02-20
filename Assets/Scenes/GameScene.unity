@@ -2199,6 +2199,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3220057362060152035, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220057362060152035, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 13107
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220057362060152035, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220057362060152035, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0.38039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220057362060152035, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4963052281645627634, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
       propertyPath: sO_InputVector
       value: 

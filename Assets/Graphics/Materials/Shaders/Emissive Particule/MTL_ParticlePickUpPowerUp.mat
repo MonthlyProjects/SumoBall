@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MTL_ParticleGetScore
+  m_Name: MTL_ParticlePickUpPowerUp
   m_Shader: {fileID: -6465566751694194690, guid: f14a195ebbb9b844494616f05481f040, type: 3}
   m_Parent: {fileID: 2100000, guid: f0377be8ef3f6c7459c20b7812d74d78, type: 2}
   m_ModifiedSerializedProperties: 16
@@ -62,7 +62,7 @@ Material:
     - _ZTestDepthEqualForOpaque: 4
     - _ZWrite: 0
     m_Colors:
-    - _EmissiveColor: {r: 0, g: 10.432951, b: 0.058655594, a: 1306.9309}
+    - _EmissiveColor: {r: 0, g: 3.8889756, b: 59.017693, a: 1306.9309}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2271255828336736020

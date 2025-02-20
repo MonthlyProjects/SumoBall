@@ -1,14 +1,15 @@
-using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerPowerUpController : MonoBehaviour
 {
     [SerializeField] private List<PowerUp> effects;
+    public UnityEvent OnPowerUpPickedUp;
 
     public void DistributeEffect<T>() where T : PowerUp
     {
+        OnPowerUpPickedUp?.Invoke();
         PowerUp effectToUse = GetPowerUp<T>();
         if(effectToUse.IsAppliedToCurrentPlayer)
         {
