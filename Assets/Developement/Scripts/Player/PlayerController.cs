@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private BallController ballController;
     [SerializeField] private PlayerInputController inputController;
+    [SerializeField] private PlayerSkinLoader skinLoader;
     
     public void InitializePlayer (InitializeData initializeData)
     {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
         ballController.Initialize(so_input);
         inputController.Initialize(initializeData.PlayerInput, so_input);
+        skinLoader.LoadSkin(initializeData.PlayerSkin);
     }
 
     private void OnDestroy()

@@ -10269,6 +10269,7 @@ GameObject:
   - component: {fileID: 9183993327566564307}
   - component: {fileID: 8923539369373790360}
   - component: {fileID: 915155118770672466}
+  - component: {fileID: 4381639222934806507}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10307,6 +10308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballController: {fileID: 4963052281645627634}
   inputController: {fileID: 8923539369373790360}
+  skinLoader: {fileID: 4381639222934806507}
 --- !u!33 &7554905784147239845
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10338,7 +10340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96cdd0c3f6718f649aae34648d04d726, type: 2}
+  - {fileID: 2100000, guid: 46fc98b6033bcde41935f54cb521940a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10555,6 +10557,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4381639222934806507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825232975653261462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f32c7e65abac940acf7def1413941f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRenderer: {fileID: 9108954847718739250}
 --- !u!1 &8897510548352095475
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,16 +12,18 @@ public class PlayerData
     //Peut etre null
     public PlayerSkin playerSkin;
 
-    public PlayerData (PlayerInput playerInput)
+    public PlayerData (PlayerInput playerInput, Color color)
     {
         playerObject = null;
         this.playerInput = playerInput;
-        this.playerSkin = new PlayerSkin();
+        this.playerSkin = new PlayerSkin() { 
+        color = color
+        };
     }
 
 }
 
-public struct PlayerSkin
+public class PlayerSkin
 {
     public GameObject skinPrefab;
     public Color color;

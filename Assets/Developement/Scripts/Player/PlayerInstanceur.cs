@@ -30,11 +30,6 @@ public class PlayerInstanceur : MonoBehaviour
 
             PlayerSkin playerSkin = gameData.playersData[i].playerSkin;
 
-            if (playerSkin.skinPrefab == null)
-            {
-                playerSkin = defaultSkin;
-            } 
-
             gameData.playersData[i].playerObject = Instantiate(playerPrefab, ChoseSpawnPosition(), Quaternion.identity, playerParent);
 
             gameData.playersData[i].playerObject.GetComponent<PlayerController>().InitializePlayer(new PlayerController.InitializeData()
@@ -78,11 +73,6 @@ public class PlayerInstanceur : MonoBehaviour
         if (playerData.playerObject != null) { return; }
 
         PlayerSkin playerSkin = playerData.playerSkin;
-
-        if (playerSkin.skinPrefab == null)
-        {
-            playerSkin = defaultSkin;
-        }
 
         playerData.playerObject = Instantiate(playerPrefab, ChoseSpawnPosition(), Quaternion.identity, playerParent);
 

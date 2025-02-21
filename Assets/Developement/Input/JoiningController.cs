@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -31,7 +31,13 @@ public class JoiningController : MonoBehaviour
     /// <param name="playerInput"></param>
     private void OnPlayerJoin(PlayerInput playerInput)
     {
-        gameData.AddPlayer(new PlayerData(playerInput));
+        List<Color> colors = new List<Color>();
+        colors.Add(Color.yellow);
+        colors.Add(Color.red);
+        colors.Add(Color.green);
+        colors.Add(Color.blue);
+        int randomInt = Random.Range(0, colors.Count);
+        gameData.AddPlayer(new PlayerData(playerInput, colors[randomInt]));
         OnPlayerAdd?.Invoke(gameData.playersData[gameData.playersData.Count - 1]);
     }
 
