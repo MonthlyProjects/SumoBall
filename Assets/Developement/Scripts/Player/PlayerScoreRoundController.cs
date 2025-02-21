@@ -8,16 +8,22 @@ public class PlayerScoreRoundController : MonoBehaviour
     [SerializeField] private BallHealth ballHealth;
 
     private BallController lastBallToBumpMe;
-    public int score;
     public UnityEvent<float> OnScoreAdded;
 
-    private void Awake()
+    private PlayerData playerData;
+
+    [SerializeField] private GameState roundOverState;
+
+    private bool _scoreSettedToplayerData;
+
+    private void Start()
     {
-        score = 0;
+        playerData.InRoundPlayerScore = 0;
     }
     private void OnEnable()
     {
         ballController.OnContactWithOtherBallController.AddListener(UpdateLastBallToBumpMe);
+        roundOverState.OnGameStateActive += SetScoreToPlayerData;
     }
     private void OnDisable()
     {
@@ -26,6 +32,13 @@ public class PlayerScoreRoundController : MonoBehaviour
         {
             ConnectToBallDeath(false);
         }
+        roundOverState.OnGameStateActive -= SetScoreToPlayerData;
+        SetScoreToPlayerData();
+
+    }
+    public void SetPlayerData(PlayerData playerData)
+    {
+        this.playerData = playerData;
     }
     private void UpdateLastBallToBumpMe(BallController ballController)
     {
@@ -50,7 +63,15 @@ public class PlayerScoreRoundController : MonoBehaviour
     }
     private void AddScore(Vector3 temp)
     {
-        score += 1;
-        OnScoreAdded?.Invoke(score);
+        playerData.InRoundPlayerScore += 1;
+        OnScoreAdded?.Invoke(playerData.InRoundPlayerScore);
+    }
+    private void SetScoreToPlayerData()
+    {
+        if(!_scoreSettedToplayerData)
+        {
+            playerData.TotalPlayerScore += playerData.InRoundPlayerScore;
+            _scoreSettedToplayerData = true;
+        }
     }
 }

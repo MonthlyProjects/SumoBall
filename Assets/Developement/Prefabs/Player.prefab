@@ -10541,7 +10541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballController: {fileID: 4963052281645627634}
   ballHealth: {fileID: 4323558266049029997}
-  score: 0
   OnScoreAdded:
     m_PersistentCalls:
       m_Calls:
@@ -10557,6 +10556,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  roundOverState: {fileID: 11400000, guid: 72a4b1dda692e8441a7317b1d47ce9f6, type: 2}
 --- !u!114 &4381639222934806507
 MonoBehaviour:
   m_ObjectHideFlags: 0

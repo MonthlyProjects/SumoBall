@@ -80,6 +80,8 @@ public class PlayerInstanceur : MonoBehaviour
             PlayerSkin = playerSkin
         });
 
+        playerData.playerObject.GetComponent<PlayerScoreRoundController>().SetPlayerData(playerData);
+
         gameData.OnPlayerSpawn?.Invoke(playerData);
     }
 

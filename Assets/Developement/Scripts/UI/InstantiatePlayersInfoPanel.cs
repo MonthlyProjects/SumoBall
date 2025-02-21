@@ -14,7 +14,6 @@ public class InstantiatePlayersInfoPanel : MonoBehaviour
 
     private void SpawnUIPlayersPanels()
     {
-        Debug.Log("SpawnPlayersPanelUI");
 
         foreach (PlayerData playerData in gameData.playersData)
         {
