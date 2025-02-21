@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerInstanceur : MonoBehaviour
 {
+    [SerializeField] private bool isGame;
+    [SerializeField] private GameState loadingRound;
+
     [SerializeField] private GameData gameData;
 
     [SerializeField] private GameObject playerPrefab;
@@ -16,31 +19,27 @@ public class PlayerInstanceur : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
     private List<Transform> _spawnPointsUse;
 
-    public UnityEvent<PlayerData> OnPlayerSpawn;
-    public UnityEvent<PlayerData> OnPlayerDespawn;
-
+    private void OnEnable()
+    {
+        loadingRound.OnGameStateActive += InstancePlayers;
+        gameData.OnPlayerAdd.AddListener((playerData) => { if (!isGame) { InstancePlayer(playerData); } });
+    }
+    private void OnDisable()
+    {
+        loadingRound.OnGameStateActive -= InstancePlayers;
+        gameData.OnPlayerAdd.RemoveListener((playerData) => { if (!isGame) { InstancePlayer(playerData); } });
+    }
 
     [EasyButtons.Button]
     public void InstancePlayers()
     {
-        //Check si l object
         for (int i = 0; i < gameData.playersData.Count; i++)
         {
-            if (gameData.playersData[i].playerObject != null) { continue; }
-
-            PlayerSkin playerSkin = gameData.playersData[i].playerSkin;
-
-            gameData.playersData[i].playerObject = Instantiate(playerPrefab, ChoseSpawnPosition(), Quaternion.identity, playerParent);
-
-            gameData.playersData[i].playerObject.GetComponent<PlayerController>().InitializePlayer(new PlayerController.InitializeData()
-            {
-                PlayerInput = gameData.playersData[i].playerInput,
-                PlayerSkin = playerSkin
-            });
-
-            OnPlayerSpawn.Invoke(gameData.playersData[i]);
+            InstancePlayer(gameData.playersData[i]);
         }
-        Debug.Log("InstancePlayers");
+
+        Debug.Log("J ai spawn tout les joueur");
+
         gameData.OnAllPlayersSpawn?.Invoke();
     }
 
@@ -71,7 +70,6 @@ public class PlayerInstanceur : MonoBehaviour
     public void InstancePlayer (PlayerData playerData)
     {
         if (playerData.playerObject != null) { return; }
-
         PlayerSkin playerSkin = playerData.playerSkin;
 
         playerData.playerObject = Instantiate(playerPrefab, ChoseSpawnPosition(), Quaternion.identity, playerParent);
@@ -82,7 +80,7 @@ public class PlayerInstanceur : MonoBehaviour
             PlayerSkin = playerSkin
         });
 
-        OnPlayerSpawn.Invoke(playerData);
+        gameData.OnPlayerSpawn?.Invoke(playerData);
     }
 
     [EasyButtons.Button]
@@ -99,8 +97,6 @@ public class PlayerInstanceur : MonoBehaviour
             player.GetComponent<PlayerController>().DestroyPlayer();
 
             gameData.playersData[i].playerObject = null;
-
-            OnPlayerDespawn.Invoke(gameData.playersData[i]);
         }
     }
 
@@ -114,7 +110,5 @@ public class PlayerInstanceur : MonoBehaviour
         player.GetComponent<PlayerController>().DestroyPlayer();
 
         playerData.playerObject = null;
-
-        OnPlayerDespawn.Invoke(playerData);
     }
 }

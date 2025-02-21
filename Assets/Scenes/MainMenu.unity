@@ -833,7 +833,6 @@ GameObject:
   - component: {fileID: 188966652}
   - component: {fileID: 188966651}
   - component: {fileID: 188966650}
-  - component: {fileID: 188966649}
   m_Layer: 0
   m_Name: JoiningControler
   m_TagString: Untagged
@@ -841,49 +840,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &188966649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 188966648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c1a8582bc8e226408f849d1870e05f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameState: {fileID: 11400000, guid: 776ad82f3c0716646bdd0d55d59c5cbf, type: 2}
-  OnStateActive:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 188966650}
-        m_TargetAssemblyTypeName: JoiningController, Assembly-CSharp
-        m_MethodName: EnableJoining
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  OnStateInactive:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 188966650}
-        m_TargetAssemblyTypeName: JoiningController, Assembly-CSharp
-        m_MethodName: EnableJoining
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &188966650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,48 +853,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: aa4d91c6f4b31544bb785fc90b9be854, type: 2}
+  JoiningPlayer: {fileID: 11400000, guid: 776ad82f3c0716646bdd0d55d59c5cbf, type: 2}
   OnPlayerAdd:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1859621203}
-        m_TargetAssemblyTypeName: PlayerInstanceur, Assembly-CSharp
-        m_MethodName: InstancePlayer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: aa4d91c6f4b31544bb785fc90b9be854, type: 2}
-        m_TargetAssemblyTypeName: GameData, Assembly-CSharp
-        m_MethodName: LauchPlayer
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnPlayerRemove:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1859621203}
-        m_TargetAssemblyTypeName: PlayerInstanceur, Assembly-CSharp
-        m_MethodName: DestroyPlayers
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &188966651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6293,6 +6214,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696779046}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1712318121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1712318123}
+  - component: {fileID: 1712318122}
+  m_Layer: 0
+  m_Name: PlayerLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1712318122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712318121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d8589ce8ee606468557a5a16d9499b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: aa4d91c6f4b31544bb785fc90b9be854, type: 2}
+  isGame: 0
+  inRound: {fileID: 11400000, guid: d24766e03af2bb84c93ea8c4446352d9, type: 2}
+--- !u!4 &1712318123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712318121}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.2166634, y: -6.367276, z: -3.0380259}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717475613
 GameObject:
   m_ObjectHideFlags: 0
@@ -7094,16 +7062,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9da0627c2e06cd428c6e7fb60e0749b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGame: 0
+  loadingRound: {fileID: 11400000, guid: f8916b51c3207534888553a3ac0c2a07, type: 2}
   gameData: {fileID: 11400000, guid: aa4d91c6f4b31544bb785fc90b9be854, type: 2}
   playerPrefab: {fileID: 8825232975653261462, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
   playerParent: {fileID: 885446639}
   spawnPoints: []
-  OnPlayerSpawn:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPlayerDespawn:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &1859621204
 Transform:
   m_ObjectHideFlags: 0
@@ -8003,3 +7967,4 @@ SceneRoots:
   - {fileID: 1859621204}
   - {fileID: 885446639}
   - {fileID: 188966652}
+  - {fileID: 1712318123}

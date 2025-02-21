@@ -27,16 +27,16 @@ public class Multi_InputManager : MonoBehaviour
         Instance = this;
 
         playerInputs = new List<PlayerInput>();
-
-
-        gameData.OnPlayerAdd.AddListener(t => { OnPlayerAdd(t.playerInput); });
-        gameData.OnPlayerRemove.AddListener(t => { OnPlayerRemove(t.playerInput); });
     }
 
-    private void OnPlayerAdd(PlayerInput playerInput)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="playerInput"></param>
+    public void OnPlayerAdd(PlayerInput playerInput)
     {
         playerInputs.Add(playerInput);
-
+        Debug.Log("Je passe en false la binding");
         playerInput.gameObject.transform.parent = transform;
         EnablePlayerCurrentActionMap(playerInputs.Count - 1, false);
     }

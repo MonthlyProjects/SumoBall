@@ -9,11 +9,10 @@ public class GameData : ScriptableObject
     public List<PlayerData> playersData;
 
     public UnityEvent<PlayerData> OnPlayerAdd;
-
     public UnityEvent<PlayerData> OnPlayerRemove;
 
     public UnityEvent OnAllPlayersSpawn;
-
+    public UnityEvent<PlayerData> OnPlayerSpawn;
     public void Initialize ()
     {
         playersData = new List<PlayerData>();

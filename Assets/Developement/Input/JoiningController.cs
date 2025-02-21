@@ -7,15 +7,25 @@ using UnityEngine.InputSystem;
 public class JoiningController : MonoBehaviour
 {
     [SerializeField] private GameData gameData;
-
-    public UnityEvent<PlayerData> OnPlayerAdd;
-    public UnityEvent<PlayerData> OnPlayerRemove;
+    [SerializeField] private GameState JoiningPlayer;
 
     private PlayerInputManager _playerInputManager;
 
     private void Awake()
     {
         Initialize();
+    }
+
+    private void OnEnable()
+    {
+        JoiningPlayer.OnGameStateActive += () => { EnableJoining(true); };
+        JoiningPlayer.OnGameStateInactive += () => { EnableJoining(false); };
+    }
+
+    private void OnDisable()
+    {
+        JoiningPlayer.OnGameStateActive -= () => { EnableJoining(true); };
+        JoiningPlayer.OnGameStateInactive -= () => { EnableJoining(false); };
     }
 
     public void Initialize()
@@ -37,8 +47,10 @@ public class JoiningController : MonoBehaviour
         colors.Add(Color.green);
         colors.Add(Color.blue);
         int randomInt = Random.Range(0, colors.Count);
+
+        Multi_InputManager.Instance.OnPlayerAdd(playerInput);
+
         gameData.AddPlayer(new PlayerData(playerInput, colors[randomInt]));
-        OnPlayerAdd?.Invoke(gameData.playersData[gameData.playersData.Count - 1]);
     }
 
     //Determine quand l appeler

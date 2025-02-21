@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
     [EasyButtons.Button]
     public void LauchPlayer ()
     {
+        Debug.Log("Je suis appeler pour rouler");
         ballController.Lauch(true);
-        inputController.Lauch(true);
+        inputController.EnableBindingMap(true);
 
     }
 
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
     public void StopPlayer()
     {
         ballController.Lauch(false);
-        inputController.Lauch(false);
+        inputController.EnableBindingMap(false);
     }
 
     public struct InitializeData

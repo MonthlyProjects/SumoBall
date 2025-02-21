@@ -31,12 +31,7 @@ public class PlayerInputController : MonoBehaviour
         actionMove.canceled += ctx => sO_InputVector.ChangeValue(Vector2.zero);
     }
 
-    public void Lauch (bool lauch)
-    {
-        EnableBindingMap(lauch);
-    }
-
-    private void EnableBindingMap (bool enable)
+    public void EnableBindingMap (bool enable)
     {
         if (enable)
         {
