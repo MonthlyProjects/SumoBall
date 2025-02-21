@@ -24,4 +24,5 @@ public class PlayerData
 public struct PlayerSkin
 {
     public GameObject skinPrefab;
+    public Color color;
 }

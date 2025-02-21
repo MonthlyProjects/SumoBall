@@ -53,7 +53,6 @@ public class GameStateManager : MonoBehaviour
         if (!_currentActiveStates.Contains(state))
         {
             _currentActiveStates.Add(state);
-            state.OnGameStateActive?.Invoke();
             state.IsActive = true;
 
             SortStatesByPriority();

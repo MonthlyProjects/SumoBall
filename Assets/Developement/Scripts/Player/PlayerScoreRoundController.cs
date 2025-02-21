@@ -9,7 +9,7 @@ public class PlayerScoreRoundController : MonoBehaviour
 
     private BallController lastBallToBumpMe;
     public int score;
-    public UnityEvent OnScoreAdded;
+    public UnityEvent<float> OnScoreAdded;
 
     private void Awake()
     {
@@ -51,6 +51,6 @@ public class PlayerScoreRoundController : MonoBehaviour
     private void AddScore(Vector3 temp)
     {
         score += 1;
-        OnScoreAdded?.Invoke();
+        OnScoreAdded?.Invoke(score);
     }
 }

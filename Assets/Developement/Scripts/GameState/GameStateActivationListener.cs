@@ -10,6 +10,8 @@ public class GameStateActivationListener : MonoBehaviour
 
     private void OnEnable()
     {
+        gameState.OnGameStateActive -= CallOnStateActive;
+        gameState.OnGameStateInactive -= CallOnStateInactive;
         gameState.OnGameStateActive += CallOnStateActive;
         gameState.OnGameStateInactive += CallOnStateInactive;
     }

@@ -21,7 +21,7 @@ public class PlayerInstanceur : MonoBehaviour
 
 
     [EasyButtons.Button]
-    public void InstancePlayers ()
+    public void InstancePlayers()
     {
         //Check si l object
         for (int i = 0; i < gameData.playersData.Count; i++)
@@ -45,6 +45,8 @@ public class PlayerInstanceur : MonoBehaviour
 
             OnPlayerSpawn.Invoke(gameData.playersData[i]);
         }
+        Debug.Log("InstancePlayers");
+        gameData.OnAllPlayersSpawn?.Invoke();
     }
 
     private Vector3 ChoseSpawnPosition ()

@@ -12,6 +12,8 @@ public class GameData : ScriptableObject
 
     public UnityEvent<PlayerData> OnPlayerRemove;
 
+    public UnityEvent OnAllPlayersSpawn;
+
     public void Initialize ()
     {
         playersData = new List<PlayerData>();
