@@ -23,3 +23,10 @@ MonoBehaviour:
   OnPlayerRemove:
     m_PersistentCalls:
       m_Calls: []
+  OnAllPlayersSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerSpawn:
+    m_PersistentCalls:
+      m_Calls: []
+  totalRoundsToPlay: 3
