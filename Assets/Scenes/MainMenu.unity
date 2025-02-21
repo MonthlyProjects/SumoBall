@@ -3475,7 +3475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1449633691}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1228206194
@@ -3504,6 +3504,8 @@ GameObject:
   - component: {fileID: 1236364621}
   - component: {fileID: 1236364623}
   - component: {fileID: 1236364622}
+  - component: {fileID: 1236364624}
+  - component: {fileID: 1236364625}
   m_Layer: 5
   m_Name: Press A to join!
   m_TagString: Untagged
@@ -3629,6 +3631,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236364620}
   m_CullTransparentMesh: 1
+--- !u!114 &1236364624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236364620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b124da839ca368442aa893875cdf562b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unscaledTimeScale: 1
+  loopDurationStart: 1
+  loopWaitDuration: 0
+  loopDurationEnd: 0.7
+  loopStartvalue: 0.8
+  loopTargetValue: 1
+  singleDuration: 0
+  singleTargetValue: 0
+  OnLoopStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoopIsAtMiddle:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoopIsAtMidle2:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLoopEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1236364624}
+        m_TargetAssemblyTypeName: FloatInterpolation, Assembly-CSharp
+        m_MethodName: AnimateValueInLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSingleStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSingleEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  transformToScale: {fileID: 1236364621}
+--- !u!114 &1236364625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236364620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbba8949eb9bac4eabd42b014d368a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAwake:
+    m_PersistentCalls:
+      m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1236364624}
+        m_TargetAssemblyTypeName: FloatInterpolation, Assembly-CSharp
+        m_MethodName: AnimateValueInLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1264658053
 GameObject:
   m_ObjectHideFlags: 0
@@ -7788,7 +7871,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2117053097}
   - component: {fileID: 2117053098}
-  - component: {fileID: 2117053099}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -7846,19 +7928,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &2117053099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117053096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24bea2bab8cbe904f824ffa5ee95ca90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 1449633694}
 --- !u!1001 &6267518212639965303
 PrefabInstance:
   m_ObjectHideFlags: 0
