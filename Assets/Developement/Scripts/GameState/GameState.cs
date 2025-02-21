@@ -32,7 +32,6 @@ public class GameState : ScriptableObject
                 return;
             }
             _isActive = value;
-            Debug.Log("Setting state :" + this.name + " to :" + value);
             
             if (invokeEventOnActiveChange)
             {

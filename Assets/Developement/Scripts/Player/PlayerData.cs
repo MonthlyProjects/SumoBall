@@ -12,6 +12,11 @@ public class PlayerData
     //Peut etre null
     public PlayerSkin playerSkin;
 
+    private int totalPlayerScore;
+    public int TotalPlayerScore { get { return totalPlayerScore; } set { totalPlayerScore = value; } }
+
+    private int inRoundPlayerScore;
+    public int InRoundPlayerScore { get { return inRoundPlayerScore; } set { inRoundPlayerScore = value; } }
     public PlayerData (PlayerInput playerInput, Color color)
     {
         playerObject = null;

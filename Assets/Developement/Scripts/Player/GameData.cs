@@ -13,9 +13,16 @@ public class GameData : ScriptableObject
 
     public UnityEvent OnAllPlayersSpawn;
     public UnityEvent<PlayerData> OnPlayerSpawn;
+
+    [SerializeField] private int totalRoundsToPlay;
+    public int TotalRoundsToPlay { get { return totalRoundsToPlay; } }
+
+    private int currentRound;
+    public int CurrentRound { get { return currentRound; } set { currentRound = value; } }
     public void Initialize ()
     {
         playersData = new List<PlayerData>();
+        currentRound = 1;
     }
 
     public void AddPlayer (PlayerData playerData)

@@ -15,7 +15,6 @@ public class PlayerSkinLoader : MonoBehaviour
         // Récupérer les propriétés actuelles du matériau
         playerRenderer.GetPropertyBlock(_propBlock);
 
-        Debug.Log(playerSkin.color.ToString());
         // Modifier la couleur
         _propBlock.SetColor("_Color", playerSkin.color);
 

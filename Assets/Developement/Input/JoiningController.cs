@@ -41,11 +41,30 @@ public class JoiningController : MonoBehaviour
     /// <param name="playerInput"></param>
     private void OnPlayerJoin(PlayerInput playerInput)
     {
-        List<Color> colors = new List<Color>();
-        colors.Add(Color.yellow);
-        colors.Add(Color.red);
-        colors.Add(Color.green);
-        colors.Add(Color.blue);
+        List<Color> colors = new List<Color>
+        {
+            Color.red,
+            Color.green,
+            Color.blue,
+            Color.yellow,
+            Color.cyan,
+            Color.magenta,
+            Color.black,
+            Color.white,
+            Color.gray,
+            Color.grey,
+            new Color(1f, 0.5f, 0f),   // Orange
+            new Color(0.5f, 0f, 0.5f), // Purple
+            new Color(0.2f, 0.8f, 0.2f), // Light Green
+            new Color(0.9f, 0.1f, 0.1f), // Dark Red
+            new Color(0.1f, 0.1f, 0.9f), // Dark Blue
+            new Color(0.9f, 0.9f, 0.1f), // Gold
+            new Color(0.5f, 0.3f, 0.1f), // Brown
+            new Color(0.8f, 0.6f, 1f), // Lavender
+            new Color(1f, 0.8f, 0.6f), // Peach
+            new Color(0f, 0.5f, 0.5f)  // Teal
+        };
+
         int randomInt = Random.Range(0, colors.Count);
 
         Multi_InputManager.Instance.OnPlayerAdd(playerInput);
