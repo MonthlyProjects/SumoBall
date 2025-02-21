@@ -7014,9 +7014,7 @@ MonoBehaviour:
   gameData: {fileID: 11400000, guid: aa4d91c6f4b31544bb785fc90b9be854, type: 2}
   playerPrefab: {fileID: 8825232975653261462, guid: ed338e83e2743b54ca0fa809ad6f55d6, type: 3}
   playerParent: {fileID: 885446639}
-  sps:
-  - {fileID: 629216814}
-  - {fileID: 1506101414}
+  spawnPoints: []
   OnPlayerSpawn:
     m_PersistentCalls:
       m_Calls: []
@@ -7790,6 +7788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2117053097}
   - component: {fileID: 2117053098}
+  - component: {fileID: 2117053099}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -7847,6 +7846,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2117053099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117053096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bea2bab8cbe904f824ffa5ee95ca90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSelectedButton: {fileID: 1449633694}
 --- !u!1001 &6267518212639965303
 PrefabInstance:
   m_ObjectHideFlags: 0
